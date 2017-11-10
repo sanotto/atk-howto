@@ -1,3 +1,5 @@
+## Bypass authorization and set guest privileges
+
 1. Create a profile (I used - "Guest Profile") for your guests. For a start, I have enabled only the "admin" access rights to the nodes I want guest users to see. 
 And to enable user registration and other guest actions, I enabled the "add" access to my user node 
 (or on a separate user registration node/table) and other actions on nodes that you may want guests to have access to.
@@ -8,10 +10,12 @@ anyone who visits your site and has not logged-in yet.
 "db" for registered users. Also, add the "authorization" entry , and set it the same as your second authentication type. 
 This prevents ATK from loading "auth_none, db" (as in my authentication) which results in a fatal error because atk does not handle yet 
 multiple authorizations.
+
 '''
  /** Security configuration **/
 'authentication' => 'none,db',
 'authorization' => 'db',
+
 '''
 5. Edit **vendor/sintattica/atk/src/Security/SecurityManager.php** to enable correct handling of login out as guest and login in as a 
 "member" change :
