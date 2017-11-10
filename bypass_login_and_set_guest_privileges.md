@@ -104,20 +104,42 @@ Into:
 After this change you will have two option when logging out, calling index.php with the parameter atklogout=true (atklogout=1) 
 will log you out, while calling it with atklogout=2 will logout and re-login.
 
-6. Edit **vendor/sintattica/atk/src/Resources/templates/login.tpl** to add a "cancel" button.
+6. Edit **vendor/sintattica/atk/src/Resources/templates/login.tpl** to add a "cancel" button if in "guest mode" and you want
+to abort login in.
 
 ```
-                          <!--
-                          <button type="submit" name="login" class="btn btn-primary center-block"
-                                  value="{atktext id="login"}">{atktext id="login"}</button>
-                          -->
-                          <button type="submit" name="login" class="btn btn-primary btn-default"
-                                  value="{atktext id="login"}">{atktext id="login"}</button>
- 
-                          <button type="submit" name="cancel" class="btn btn_cancel btn-default"
-                                  value="{atktext id="cancel"}">{atktext id="cancel"}</button>
+     {if $atklogout == 2}
+              <button type="submit" name="login" class="btn btn-primary btn-default"
+              value="{atktext id="login"}">{atktext id="login"}</button>
+
+              <button type="submit" name="cancel" class="btn btn_cancel btn-default"
+              value="{atktext id="cancel"}">{atktext id="cancel"}</button>
+      {else}
+              <button type="submit" name="login" class="btn btn-primary center-block"
+              value="{atktext id="login"}">{atktext id="login"}</button>
+
+      {/if}
+
 ```
 This will give you a Cancel button that you can click to return to the "home" page without login in.
+Now we need to pass the variable **atklogout** to the template engine, we'll need to modify **vendor/sintattica/atk/src/Security/SecurityManager.php** again to pass the variable, change the "loginForm" method to:
+
+``` public function loginForm($defaultname, $error = '')
+    {
+         global $ATK_VARS;
+         $page = Page::getInstance();
+         $ui = Ui::getInstance();
+
+         $page->register_script(Config::getGlobal('assets_url').'javascript/tools.js');
+
+         $tplvars = [];
+         $tplvars['atksessionformvars'] = Tools::makeHiddenPostvars(['atklogout', 'auth_rememberme', 'u2f_response']);
+         $tplvars['atklogout'] = $ATK_VARS['atklogout'];
+         $tplvars['formurl'] = Config::getGlobal('dispatcher');
+         $tplvars['username'] = Tools::atktext('username');
+
+         ...
+```
 
 7. Add a menu entry that allows "Members" to log in. Edit you **src/modules/security/Modules.php** add the following lines to your boot method
 
@@ -130,6 +152,8 @@ $user = \Atk\Securit\SecurityManager::atkGetUser();
           }
 
 ```
+In a matter of fact, you can add this lines to **any** Module.php (i.e. being in the security/Modules.php is not mandatory) as they are
+only to make a menu item appear on the menu bar, it just happen that adding it to security module makes sense.
 
 8. Add to your language file the translation for "members"
 
