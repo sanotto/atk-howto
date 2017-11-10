@@ -156,7 +156,7 @@ box will show only the login button again.
 
 ```php
 
-   $user = \Atk\Securit\SecurityManager::atkGetUser();
+   $user = \Sintattica\Atk\Security\SecurityManager::atkGetUser();
    if ($user['name']=='')
    {
        $this->getMenu()->addMenuItem('Miembros','index.php?atklogout=2' , 'main', true, 0, static::$module, '', 'right',true);
