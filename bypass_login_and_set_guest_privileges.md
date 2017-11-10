@@ -12,15 +12,18 @@ This prevents ATK from loading "auth_none, db" (as in my authentication) which r
 multiple authorizations.
 
 '''
+
  /** Security configuration **/
 'authentication' => 'none,db',
 'authorization' => 'db',
 
 '''
+
 5. Edit **vendor/sintattica/atk/src/Security/SecurityManager.php** to enable correct handling of login out as guest and login in as a 
 "member" change :
 
 '''
+
 public function run()
     {
         global $ATK_VARS;
@@ -54,7 +57,8 @@ public function run()
 
 Into:
 
-''' 
+'''
+
      public function run()
      {
          global $ATK_VARS;
@@ -99,6 +103,7 @@ After this change you will have two option when logging out, calling index.php w
 will log you out, while calling it with atklogout=2 will logout and re-login.
 
 6. Edit **vendor/sintattica/atk/src/Resources/templates/login.tpl** to add a "cancel" button.
+
 ''' 
                           <!--
                           <button type="submit" name="login" class="btn btn-primary center-block"
@@ -113,16 +118,23 @@ will log you out, while calling it with atklogout=2 will logout and re-login.
 This will give you a Cancel button that you can click to return to the "home" page without login in.
 
 7. Add a menu entry that allows "Members" to log in. Edit you **src/modules/security/Modules.php** add the following lines to your boot method
+
 '''
+
 $user = \Atk\Securit\SecurityManager::atkGetUser();
           if ($user['name']=='')
           {
               $this->getMenu()->addMenuItem('Miembros','index.php?atklogout=2' , 'main', true, 0, static::$module, '', 'right',true);
           }
+
 '''
+
 8. Add to your language file the translation for "members"
+
 '''
-  "members" => "Members",
+
+"members" => "Members",
+
 '''
 
 9.- All set now when you reach the site you'll be presented with the nodes authorized to guest user and if you log in clicking
