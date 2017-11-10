@@ -3,7 +3,7 @@
 ### A word of caution.
 
 This technique involves modifying atk source code! So, after applying it you should "freeze" the requirements with composer as an update
-will most likely "destroy" this fixes rendering your site buggy and/or unusable.
+will most likely "destroy" the fix rendering your site buggy and/or unusable.
 
 
 ### Allright, let's do it.
