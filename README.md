@@ -1,5 +1,6 @@
 # atk-howto
-A place to recover (and rewrite if necessary) the old atk howto wiki
+A place to recover (and rewrite if necessary) the old atk howto wiki.
+The howtos presented here have been updated to work with Atk9.
 
 Below is a list of howto's on different subjects.
 
