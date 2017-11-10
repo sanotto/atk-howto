@@ -11,18 +11,18 @@ anyone who visits your site and has not logged-in yet.
 This prevents ATK from loading "auth_none, db" (as in my authentication) which results in a fatal error because atk does not handle yet 
 multiple authorizations.
 
-'''
+```
 
  /** Security configuration **/
 'authentication' => 'none,db',
 'authorization' => 'db',
 
-'''
+```
 
 5. Edit **vendor/sintattica/atk/src/Security/SecurityManager.php** to enable correct handling of login out as guest and login in as a 
 "member" change :
 
-'''
+```
 
 public function run()
     {
@@ -52,12 +52,13 @@ public function run()
         if (isset($session['login']) && $session['login'] == 1) {
             $this->sessionLogin();
         }
+   
         ...
-'''
+```
 
 Into:
 
-'''
+```
 
      public function run()
      {
@@ -96,15 +97,16 @@ Into:
          if (isset($session['login']) && $session['login'] == 1) {
              $this->sessionLogin();
          }
-
-'''
+   
+         ...
+```
 
 After this change you will have two option when logging out, calling index.php with the parameter atklogout=true (atklogout=1) 
 will log you out, while calling it with atklogout=2 will logout and re-login.
 
 6. Edit **vendor/sintattica/atk/src/Resources/templates/login.tpl** to add a "cancel" button.
 
-''' 
+```
                           <!--
                           <button type="submit" name="login" class="btn btn-primary center-block"
                                   value="{atktext id="login"}">{atktext id="login"}</button>
@@ -114,12 +116,12 @@ will log you out, while calling it with atklogout=2 will logout and re-login.
  
                           <button type="submit" name="cancel" class="btn btn_cancel btn-default"
                                   value="{atktext id="cancel"}">{atktext id="cancel"}</button>
-'''
+```
 This will give you a Cancel button that you can click to return to the "home" page without login in.
 
 7. Add a menu entry that allows "Members" to log in. Edit you **src/modules/security/Modules.php** add the following lines to your boot method
 
-'''
+```
 
 $user = \Atk\Securit\SecurityManager::atkGetUser();
           if ($user['name']=='')
@@ -127,15 +129,15 @@ $user = \Atk\Securit\SecurityManager::atkGetUser();
               $this->getMenu()->addMenuItem('Miembros','index.php?atklogout=2' , 'main', true, 0, static::$module, '', 'right',true);
           }
 
-'''
+```
 
 8. Add to your language file the translation for "members"
 
-'''
+```
 
 "members" => "Members",
 
-'''
+```
 
 9.- All set now when you reach the site you'll be presented with the nodes authorized to guest user and if you log in clicking
 the "Members" link you'll be presented with the nodes you are authorized.
