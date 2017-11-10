@@ -91,6 +91,7 @@ Into:
          // Logout?
          if (isset($ATK_VARS['atklogout'])) {
              $this->logout();
+             //Do Re-Login
              if ($ATK_VARS['atklogout'] == 2)
              {
                  $this->loginForm($auth_user, $this->m_fatalError);
