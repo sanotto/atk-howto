@@ -6,7 +6,7 @@ And to enable user registration and other guest actions, I enabled the "add" acc
 2. Add a user ("Guest Account") account with no username and password to your user table. This will be the initial account of 
 anyone who visits your site and has not logged-in yet.
 3. Assign the "Guest Profile" to the "Guest Account".
-4. Edit config/atk.php to allow multiple authentications including "none". Here, I used the "none" authentication for guest users and 
+4. Edit **config/atk.php** to allow multiple authentications including "none". Here, I used the "none" authentication for guest users and 
 "db" for registered users. Also, add the "authorization" entry , and set it the same as your second authentication type. 
 This prevents ATK from loading "auth_none, db" (as in my authentication) which results in a fatal error because atk does not handle yet 
 multiple authorizations.
