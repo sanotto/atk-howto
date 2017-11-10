@@ -140,6 +140,8 @@ Now we need to pass the variable **atklogout** to the template engine, we'll nee
 
          ...
 ```
+This way, if you change your mind about bypassing login, you can change **config/atk.php** to disable authentication none and your login
+box will show only the login button again.
 
 7. Add a menu entry that allows "Members" to log in. Edit you **src/modules/security/Modules.php** add the following lines to your boot method
 
