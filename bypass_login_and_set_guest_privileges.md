@@ -28,7 +28,7 @@ multiple authorizations.
 ```
 
 5. Edit **vendor/sintattica/atk/src/Security/SecurityManager.php** to enable correct handling of login out as guest and login in as a 
-"member" change :
+"member", change :
 
 ```php
 
