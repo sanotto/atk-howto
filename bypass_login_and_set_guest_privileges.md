@@ -1,5 +1,13 @@
 ## Bypass authorization and set guest privileges
 
+### A word of caution.
+
+This technique involves modifying atk source code! So, after applying it you should "freeze" the requirements with composer as an update
+will most likely "destroy" this fixes rendering your site buggy and/or unusable.
+
+
+### Allright, let's do it.
+
 1. Create a profile (I used - "Guest Profile") for your guests. For a start, I have enabled only the "admin" access rights to the nodes I want guest users to see. 
 And to enable user registration and other guest actions, I enabled the "add" access to my user node 
 (or on a separate user registration node/table) and other actions on nodes that you may want guests to have access to.
