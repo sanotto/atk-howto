@@ -165,7 +165,7 @@ box will show only the login button again.
 
 ```
 In a matter of fact, you can add this lines to **any** Module.php (i.e. being in the security/Modules.php is not mandatory) as they are
-only to make a menu item appear on the menu bar, it just happen that adding it to security module makes sense.
+only there to make a menu item appear on the menu bar, it just happen that adding it to security module makes sense.
 
 8. Add to your language file the translation for "members"
 
@@ -176,4 +176,4 @@ only to make a menu item appear on the menu bar, it just happen that adding it t
 ```
 
 9.- All set now when you reach the site you'll be presented with the nodes authorized to guest user and if you log in clicking
-the "Members" link you'll be presented with the nodes you are authorized.
+the "Members" link you'll be presented with the nodes that you are authorized to.
