@@ -175,5 +175,5 @@ only there to make a menu item appear on the menu bar, it just happen that addin
 
 ```
 
-9.- All set now when you reach the site you'll be presented with the nodes authorized to guest user and if you log in clicking
+9. All set now when you reach the site you'll be presented with the nodes authorized to guest user and if you log in clicking
 the "Members" link you'll be presented with the nodes that you are authorized to.
