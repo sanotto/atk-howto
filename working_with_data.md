@@ -141,18 +141,20 @@ class MyNode extends Node
 }
 ```
 The node's select functionallity is implemented in  **vendor/sintattica/atk/src/Utils/Selector.php**, in that class, the following 
-methods deserve a lool:
+methods deserve a look:
 
 * getAllRows : Retrieves an array with all the rows produced by the select.
 * getFirstRow: Retrieves only the first row.
 * getRowCount: Retrieves the row count.
 * limit      : Allow to set a limit and an offset clause to the query.
 
+There are more, take a peek to the source code.
 
 ## The query builder 
 
 The database object provides a Query Builder object, with this object you can create an arbitrarily complex query while
-maintaining it's portability and security across databases. in order to create a query you can invoke the Database's object method **createQuery**, like this:
+maintaining it's portability and security across databases. 
+In order to create a query you can invoke the Database's object method **createQuery**, like this:
 
 ```php
 use Sintattica\Atk\Db\Db;
