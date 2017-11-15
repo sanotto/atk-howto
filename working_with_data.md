@@ -2,7 +2,7 @@
 
 ## The fastest and riskier way use Db::getInstance();
 
-In your node, you'll nee to declare
+In your node, you'll need to declare:
 
 ```php
  use Sintattica\Atk\Db\Db;
