@@ -124,3 +124,4 @@ So we can now write an action called  **display** , like this:
       }
 
 ```
+When the action display on the node notification is called, the view will be rendered using smarty.
