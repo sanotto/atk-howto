@@ -92,7 +92,7 @@ class MyNode extends Node
 You can recover just the first row with: 
 
 ```php
-$rows = $this->select($fiter)->getFirsrRow();
+$rows = $this->select($fiter)->getFirstRow();
 ```
 
 If you need to recover records based on an "unsafe" entry you can use the **where** method:
