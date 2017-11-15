@@ -61,8 +61,7 @@ class notifications extends Node
                          DIRECTORY_SEPARATOR.
                          $template;
 
-         $ui = $this->getUi();
-         #$output= Tools::href(Tools::dispatch_url("Security.Users", "admin"),"<span class='glyphicon glyphicon-print'></span> ")
+         $ui = $this->getUi();         
          $box =  $ui->render($fullpath, $data, $module);
          $page = $this->getPage();
          $page->addContent($box);
