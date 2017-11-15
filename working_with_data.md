@@ -136,6 +136,46 @@ class MyNode extends Node
     }
 }
 ```
+The node's select functionallity is implemented in  **vendor/sintattica/atk/src/Utils/Selector.php**, in that class, the following 
+methods deserve a lool:
+
+* getAllRows : Retrieves an array with all the rows produced by the select.
+* getFirstRow: Retrieves only the first row.
+* getRowCount: Retrieves the row count.
+* limit      : Allow to set a limit and an offset clause to the query.
+
 
 ## The query builder 
-...
+
+The database object provides a Query Builder object, with this object you can create an arbitrarily complex query while
+maintaining it's portability and security across databases. in order to create a query you can invoke the Database's object method **createQuery**, like this:
+
+```php
+use Sintattica\Atk\Db\Db;
+
+class MyNode extends Node
+{
+
+    function myaction_action()
+    {
+          $db = Db::getInstance();
+          $rows = $db->createQuery()
+                      ->addTable('table')
+                      ->addField('field')
+                      ->addExpression('Exp1', 'field*2')
+                      ->addJoin('another_table','alias', 'alias.id=id')
+                      ->exactCondition(field, 2)
+                      ->greaterthanequalCondition(field2, 3)
+                      ->substringCondition(field3,'needle')
+                      ->addOrderBy('field1')
+                      ->setLimit(10,0)
+                      ->executeSelect();                      
+          
+          foreach($result as $row)
+          {
+              //Do Something with $row here
+          }
+     }
+}
+```
+You can check the methods in **/vendor/sintattica/atk/src/Db/Query.php**, there are executeSelect, executeDelete, executeInsert and executeUpdate, the execute methos are paired with the build methods (i.e. buildSelect, buildDelete ...)  there are "add" methods (addField, addFields, addJoin, addGroupBy, addOrderBy, addCondition) and there are "condition" methods (exactCondition, exactNumberCondition, and so on) take a look to the source code to see all the options available.
