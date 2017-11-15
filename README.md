@@ -15,4 +15,4 @@ Below is a list of howto's on different subjects.
 
 ## User Interface
 
-* [Working with views](working_with_views.md)
+* [Working with custom views](working_with_views.md)
