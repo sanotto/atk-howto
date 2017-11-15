@@ -1,4 +1,4 @@
-# Working with views
+# Working with custom views
 ATK uses smarty to render it's templates. Right out of the box, ATK does not have any mechanism to let you render customized views.
 The templates used to render the application are usually stored in **vendor/sintattica/atk/src/Resources/templates** , a folder that 
 should be read only as it is updated by composer.
