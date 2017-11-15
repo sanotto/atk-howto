@@ -35,7 +35,7 @@ class MyNode extends Node
 }
 ```
 
-This way you can access the database, BUT, be aware of sanitize any input if you are building the query string inb order
+This way you can access the database, BUT, be aware of sanitize any input if you are building the query string in order
 to avoid SQL INJECTION i.e. DO NOT do this:
 
 ```php
@@ -47,12 +47,11 @@ $result = $db->getRows($query);
 Do at least (if using mysql):
 
 ```php
-$safe_variable = Mysql::escape_string($_POST['user_input']); 
+$safe_variable = Mysqli::escape_string($_POST['user_input']); 
 $query = "SELECT * FROM TABLE WHERE field = ". $safe_variable;    
 $result = $db->getRows($query);
 ```
-The rationale of the previous precaution is becasue if the user_input variable contains **'Sarah'; DELETE FROM employees** the result would 
-simply be a search for the string "'Sarah'; DELETE FROM employees", and you will not end up with an empty table.
+The rationale of the previous precaution is becasue if the user_input variable contains **'Sarah'; DELETE FROM employees** the result would simply be a search for the string "'Sarah'; DELETE FROM employees", and you will not end up with an empty table.
 
 Having said that, do not use **Db::getInstance()** Unless you are really sure about the query string  (i.e. a "fixed" query select to recover a "list" from a table)
 
@@ -149,6 +148,15 @@ methods deserve a look:
 * limit      : Allow to set a limit and an offset clause to the query.
 
 There are more, take a peek to the source code.
+By the way, you can recover data from other node to, using:
+
+```php
+
+ $rows_from_other_node =Atk::getInstance()->atkGetNode('module.node')
+                                          ->select()
+                                         -where($filter)
+                                         ->getAllRows();
+```
 
 ## The query builder 
 
