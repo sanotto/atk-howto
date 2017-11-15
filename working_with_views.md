@@ -77,6 +77,22 @@ properly.
 In your module's folder, let's say **src/modules/notifications** add a "views" folder i.e. **src/modules/notifications/views**.
 In that folder add another folder for each node in your module, i.e. **src/modules/notifications/views/notification**.
 Now we can store the custom views for our notification node as this **src/modules/notifications/views/notification/render_list.tpl**.
+Your project folder structure should look like:
+```pre
+bin
+config
+languages
+src
+  modules
+     notifications
+         views
+            notification
+                render_list.tpl
+var
+vendor
+web
+composer.json
+```
 The template is in smarty style, so our render_list.tpl could look like:
 
 ```smarty
