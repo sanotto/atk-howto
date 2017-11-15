@@ -148,7 +148,7 @@ methods deserve a look:
 * limit      : Allow to set a limit and an offset clause to the query.
 
 There are more, take a peek to the source code.
-By the way, you can recover data from other node to, using:
+By the way, you can recover data from other nodes too, using:
 
 ```php
 
