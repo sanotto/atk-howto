@@ -112,7 +112,7 @@ class MyNode extends Node
 }
 ```
 
-Note that the question mark signals where the parameter will be replaced, and that the parameteres are sent into an array, thus
+Note that the question mark signals where the parameter will be replaced, and that the parameteres are sent into an array, thus:
 
 ```php
  ->where ('sex = ? ', ['M']) //Correct
@@ -127,9 +127,13 @@ class MyNode extends Node
 {
     function myaction_action()
     {
-          $filter = "sex ='M'";
+          $criteria = [
+                       'customer_sex'=>'M',
+                       'customer_age' => 40
+                      ];
+                      
           $rows = $this->select()
-                       ->where ('sex = :customer_sex and age >= :customer_age ', ['customer_sex'=>'M','customer_age' => 40])
+                       ->where ('sex = :customer_sex and age >= :customer_age ', $criteria)
                        ->getAllRows();
           print_r($rows):
           die();          
