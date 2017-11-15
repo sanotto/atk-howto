@@ -11,3 +11,8 @@ Below is a list of howto's on different subjects.
 ## Database
 
 * [Working with data](working_with_data.md)
+
+
+## User Interface
+
+* [Working with views](working_with_views.md)
