@@ -1,8 +1,8 @@
 # Working with views
 ATK uses smarty to render it's templates. Right out of the box, ATK does not have any mechanism to let you render customized views.
-The templates used to render the application are usually stored in **vendor/sintattica/atk/src/Resources/templates**, a folder that 
+The templates used to render the application are usually stored in **vendor/sintattica/atk/src/Resources/templates** , a folder that 
 should be read only as it is updated by composer.
-So, what if you need to render something out of the ordianry CRUD user interface that ATK provides? It can be done.
+So, what if you need to render something out of the ordinary CRUD user interface that ATK provides? It can be done.
 
 ## Adding a "renderView" method.
 
@@ -87,7 +87,7 @@ The template is in smarty style, so our render_list.tpl could look like:
 </ul>
 ```
 
-So we can now write an action called  show_list, like this:
+So we can now write an action called  **display** , like this:
 
 ```php
       public function action_display()
