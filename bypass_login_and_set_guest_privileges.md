@@ -109,6 +109,28 @@ Into:
    
          ...
 ```
+Also change 
+
+```
+  // try a standard login with user / password
+  if ($this->auth_response === self::AUTH_UNVERIFIED) {
+      if($auth_user || $isCli ) {
+       $this->login($auth_user, $auth_pw);
+  }
+```
+
+Into:
+
+```
+  // try a standard login with user / password
+  if ($this->auth_response === self::AUTH_UNVERIFIED) {
+      if($auth_user ||
+          $isCli || (!$auth_user &&
+                      $this->m_authentication['Sintattica\Atk\Security\Auth\NoneAuth'] )) {
+       $this->login($auth_user, $auth_pw);
+  }
+```
+
 
 After this change you will have two option when logging out, calling index.php with the parameter atklogout=true (atklogout=1) 
 will log you out, while calling it with atklogout=2 will logout and re-login.
